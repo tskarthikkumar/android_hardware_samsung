@@ -17,11 +17,10 @@ LOCAL_SHARED_LIBRARIES := \
     libhardware_legacy \
     librilutils
 
-ifneq ($(filter xmm6262 xmm6360,$(BOARD_MODEM_TYPE)),)
-LOCAL_CFLAGS := -DMODEM_TYPE_6262
-endif
-ifeq ($(BOARD_MODEM_TYPE),xmm6260)
-LOCAL_CFLAGS := -DMODEM_TYPE_6260
+LOCAL_CFLAGS :=
+
+ifeq ($(BOARD_MODEM_TYPE),xmm7260)
+LOCAL_CFLAGS += -DMODEM_TYPE_XMM7260
 endif
 
 LOCAL_MODULE:= libril
@@ -42,12 +41,7 @@ LOCAL_STATIC_LIBRARIES := \
     libcutils \
     librilutils_static
 
-ifneq ($(filter xmm6262 xmm6360,$(BOARD_MODEM_TYPE)),)
-LOCAL_CFLAGS := -DMODEM_TYPE_6262
-endif
-ifeq ($(BOARD_MODEM_TYPE),xmm6260)
-LOCAL_CFLAGS := -DMODEM_TYPE_6260
-endif
+LOCAL_CFLAGS :=
 
 LOCAL_MODULE:= libril_static
 
